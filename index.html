@@ -1,0 +1,79 @@
+<!Doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width =device-width initial-scale=1.0">
+        <title>Anime Toys Store</title>
+        <link rel="stylesheet" href="style.css">
+
+    </head>
+    <body>
+        <header>
+            <h1>Anime Toys Store</h1>
+           
+            <nav>
+               
+                <a href="#">Home</a>
+                <a href="#">Products</a>
+                <a href="#">Cart(<span id="cartCount">0</span>)</a>
+                 <button id="themeBtn">🌙 Dark Mode</button>
+            </nav>
+        </header>
+        <section class="hero">
+            <h2 id="heroTitle">Naruto Collection</h2>
+            <p id="heroText">Discover legendry ninja figures. </p>
+
+            <button>Shop Now</button>
+        </section>
+        <section class="featured">
+            <h2>🔥 Featured Figures</h2>
+            <div class="featured-container">
+                <div class="featured-card">
+                    <h3>Naruto Uzumaki</h3>
+                    <p>Best Seller</p>
+                </div>
+                <div class="featured-card">
+                    <h3>Monkey D. Luffy</h3>
+                    <p>Fan Favorite</p>
+                </div>
+                <div class="featured-card">
+                    <h3>Son Goku</h3>
+                    <p>Limited Edition</p>
+                </div>
+            </div>
+        </section>
+        <section class="products">
+            <h2>Popular Anime Figures</h2>
+             <div class="filters">
+                <button onclick="filterProducts('All')">All</button>
+                <button onclick="filterProducts('Naruto')">Naruto</button>
+                <button onclick="filterProducts('One Piece')">One Piece</button>
+                <button onclick="filterProducts('Dragon Ball')">Dragon Ball</button>
+            </div>
+            <input type="text" id="searchInput" placeholder="search Anime Figures...">
+            <div class="product-container" id="productContainer">
+               
+            </div>
+        </section>
+        <div id="toast"></div>
+        <div class="cart-section">
+                <h2>🛒 Cart</h2>
+                <div id="cartItems"></div>
+                <h3>Total: ₹<span id="totalPrice">0</span></h3>
+                <button id="checkoutBtn" onclick="checkout()">Checkout</button>
+            </div>
+            <div id="successPopup" class="success-popup">
+                <div class="success-content">
+                    <h2>🎉 Order Placed!</h2>
+                    <p>Thank you for shopping with Anime Toys Store.</p>
+                </div>
+            </div>
+            <footer>
+                <h3>Anime Toys Store</h3>
+                <p>&copy; Anime Toys Store. All rights reserved.</p>
+            </footer>
+           
+        <script src="script.js"></script>
+        
+    </body>
+</html>

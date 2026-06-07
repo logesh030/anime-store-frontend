@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Store Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="admin-header">
+        <h1>🎌 Anime Store Admin Dashboard</h1>
+    </header>
+
+    <div class="sidebar">
+    <h2>🎌 Anime Admin</h2>
+
+    <ul>
+        <li>📦 Products</li>
+        <li>🛒 Orders</li>
+        <li>👥 Customers</li>
+        <li>📊 Analytics</li>
+        <li>⚙️ Settings</li>
+    </ul>
+
+     <button onclick="logout()">
+    Logout
+    
+</div>
+<div class="main-content">
+
+    <div class="dashboard">
+
+        <div class="stats-container">
+
+            <div class="stat-card">
+                <h2 id="totalProducts">0</h2>
+                <p>Total Products</p>
+            </div>
+
+            <div class="stat-card">
+                <h2 id="totalCategories">0</h2>
+                <p>Categories</p>
+            </div>
+
+            <div class="stat-card">
+                <h2 id="inventoryValue">₹0</h2>
+                <p>Inventory Value</p>
+            </div>
+
+        </div>
+
+        <div class="form-section">
+
+            <h2>Add New Product</h2>
+
+            <form id="productForm">
+
+                <input type="text"
+                       id="name"
+                       placeholder="Product Name"
+                       required>
+
+                <input type="number"
+                       id="price"
+                       placeholder="Price"
+                       required>
+
+                <input type="text"
+                       id="category"
+                       placeholder="Category"
+                       required>
+
+                <input type="text"
+                       id="image"
+                       placeholder="Image URL"
+                       required>
+
+                <button type="submit">
+                    Add Product
+                </button>
+
+            </form>
+
+        </div>
+
+        <h2 class="product-title">Product Management</h2>
+
+        <div id="adminProducts" class="products-grid"></div>
+
+    </div>
+    </div>
+
+   
+</button>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="admin.js"></script>
+
+</body>
+</html>
