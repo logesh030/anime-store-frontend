@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Anime Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <a href="index.html">🏠 Home</a>
+    <a href="cart.html">🛒 Cart</a>
+    <a href="orders.html">📦 Orders</a>
+</nav>
+
+<div class="checkout-container">
+
+    <h1>Checkout</h1>
+
+    <form id="checkoutForm">
+
+        <input type="text"
+               id="customerName"
+               placeholder="Full Name"
+               required>
+
+        <input type="text"
+               id="address"
+               placeholder="Shipping Address"
+               required>
+
+        <input type="tel"
+               id="phone"
+               placeholder="Phone Number"
+               required>
+
+        <h3>Payment Method</h3>
+
+        <label>
+            <input type="radio"
+                   name="payment"
+                   value="UPI"
+                   checked>
+            UPI
+        </label>
+
+        <label>
+            <input type="radio"
+                   name="payment"
+                   value="Card">
+            Card
+        </label>
+
+        <label>
+            <input type="radio"
+                   name="payment"
+                   value="COD">
+            Cash on Delivery
+        </label>
+
+        <h2>
+            Total: ₹<span id="checkoutTotal">0</span>
+        </h2>
+
+        <button type="submit">
+            Place Order
+        </button>
+
+    </form>
+
+</div>
+
+<script src="checkout.js"></script>
+
+</body>
+</html>

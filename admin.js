@@ -61,26 +61,54 @@ document.getElementById("inventoryValue").textContent =
     });
 }
 
+
+async function uploadImage(file)
+{
+    const formData = new FormData();
+
+    formData.append("file", file);
+
+    const response = await fetch(
+        "http://localhost:8080/upload",
+        {
+            method: "POST",
+            body: formData
+        }
+    );
+
+    return await response.text();
+}
+
 document.getElementById("productForm")
 .addEventListener("submit", async (e) => {
 
     e.preventDefault();
 
-    const product = {
+   const imageFile =
+document.getElementById("image").files[0];
 
-        name:
-        document.getElementById("name").value,
+let imageUrl = "";
 
-        price:
-        Number(document.getElementById("price").value),
+if(imageFile)
+{
+    imageUrl =
+    await uploadImage(imageFile);
+}
 
-        category:
-        document.getElementById("category").value,
+const product = {
 
-        image:
-        document.getElementById("image").value
-    };
+    name:
+    document.getElementById("name").value,
 
+    price:
+    Number(document.getElementById("price").value),
+
+    category:
+    document.getElementById("category").value,
+
+    image:
+    imageUrl
+};
     console.log(localStorage.getItem("token"));
 
     await fetch(
@@ -96,8 +124,9 @@ document.getElementById("productForm")
             body: JSON.stringify(product)
         }
     );
+    alert("✅ Product Added Successfully");
     document.getElementById("productForm").reset();
-
+preview.style.display = "none";
     loadProducts();
 });
 
@@ -189,3 +218,19 @@ function logout()
     window.location.href =
     "admin-login.html";
 }
+
+const imageInput = document.getElementById("image");
+const preview = document.getElementById("preview");
+
+imageInput.addEventListener("change", function () {
+
+    const file = this.files[0];
+
+    if(file){
+
+        preview.src = URL.createObjectURL(file);
+        preview.style.display = "block";
+
+    }
+
+});

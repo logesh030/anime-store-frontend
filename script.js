@@ -1,7 +1,8 @@
 
 
 let products= [];
-
+let cart =
+JSON.parse(localStorage.getItem("cart")) || [];
 
 const productContainer =
 document.getElementById("productContainer");
@@ -44,9 +45,9 @@ productList.forEach(product => {
 });
 }
 
-let cart=JSON.parse(localStorage.getItem("cart")) || [];
-document.getElementById("cartCount").innerText = cart.length;
-displayCart();
+
+updateCartCount();
+
 function addToCart(id)
 {
     const selectedProduct = products.find(
@@ -67,8 +68,7 @@ function addToCart(id)
         JSON.stringify(cart)
     );
 
-    document.getElementById("cartCount").innerText =
-        cart.length;
+    updateCartCount();
 
     showToast(
         selectedProduct.name + " added to cart!"
@@ -110,51 +110,6 @@ themeBtn.addEventListener("click", ()=>{
     }
 });
 }
-function displayCart()
-{
-    const cartItems = document.getElementById("cartItems");
-    const totalPrice = document.getElementById("totalPrice");
-
-    cartItems.innerHTML = "";
-
-    let total=0;
-    cart.forEach((item,index) => {
-        total+=item.price * item.quantity;
-
-        cartItems.innerHTML += `
-        <div class="cart-item">
-    <span>${item.name}</span>
-
-    <div class="quantity-controls">
-        <button onclick="decreaseQuantity(${index})">-</button>
-        <span>${item.quantity}</span>
-        <button onclick="increaseQuantity(${index})">+</button>
-    </div>
-
-    <span>₹${item.price * item.quantity}</span>
-
-    <button onclick="removeFromCart(${index})">
-        ❌
-    </button>
-</div>
-         `;
-    });
-    totalPrice.textContent = total;
-}
-function removeFromCart(index)
-{
-    cart.splice(index, 1);
-    localStorage.setItem("cart", JSON.stringify(cart));
-
-document.getElementById("cartCount").innerText =
-cart.length;
-
-displayCart();
-}
-document.getElementById("cartCount").innerText =
-cart.length;
-
-displayCart();
 
 
 function filterProducts(category)
@@ -171,47 +126,7 @@ function filterProducts(category)
 
     
 }
-function increaseQuantity(index)
-{
-    cart[index].quantity++;
-    localStorage.setItem("cart", JSON.stringify(cart));
-    displayCart();
-}
-function decreaseQuantity(index)
-{
-    if(cart[index].quantity>1)
-    {
-        cart[index].quantity--;
-    }
-    else{
-        cart.splice(index,1);
-    }
-    localStorage.setItem(
-        "cart",JSON.stringify(cart)
-    );
-    document.getElementById("cartCount").innerText = cart.length;
-    displayCart();
-}
-function checkout()
-{
-    if(cart.length === 0)
-    {
-        alert("Your cart is emptyt!");
-        return;
-    }
-    document.getElementById("successPopup").classList.add("show");
 
-    cart=[];
-
-    localStorage.setItem("cart",JSON.stringify(cart));
-    document.getElementById("cartCount").innerText=0;
-
-    displayCart();
-
-    setTimeout(() => {
-        document.getElementById("successPopup").classList.remove("show");
-    },3000);
-}
 const banners=[
     {
         title: "Naruto Collection",
@@ -242,3 +157,14 @@ setInterval(() => {
       heroText.textContent = banners[currentBanner].text;
 }, 3000);
 loadProducts();
+function updateCartCount()
+{
+    const totalItems = cart.reduce((sum, item) => sum+item.quantity, 0);
+    const cartCount =
+document.getElementById("cartCount");
+
+if(cartCount)
+{
+    cartCount.innerText = totalItems;
+}
+}

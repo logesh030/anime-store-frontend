@@ -1,0 +1,29 @@
+body{
+    background:#111;
+    color:white;
+    font-family:Arial;
+    padding:30px;
+}
+
+h1{
+    text-align:center;
+    color:orange;
+}
+
+.order-card{
+    background:#1e1e1e;
+    padding:20px;
+    margin:20px auto;
+    max-width:600px;
+    border-radius:15px;
+    border-left:5px solid orange;
+    transition:0.3s;
+}
+
+.order-card:hover{
+    transform:translateY(-5px);
+}
+
+.order-card h3{
+    color:orange;
+}

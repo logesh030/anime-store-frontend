@@ -71,10 +71,15 @@
                        placeholder="Category"
                        required>
 
-                <input type="text"
-                       id="image"
-                       placeholder="Image URL"
-                       required>
+                <input type="file"
+                        id="image"
+                        accept="image/*"
+                        required>
+
+
+                        <img id="preview"
+                              width="150"
+                              style="display:none; margin-top:10px;">
 
                 <button type="submit">
                     Add Product
